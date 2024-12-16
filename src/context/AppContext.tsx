@@ -38,7 +38,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       }
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+       console.log(error.message);
+       
       }
     }
   };
@@ -50,7 +51,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       data.success ? setUserData(data.userData) : toast.error(data.message);
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+      console.log(error.message);
+      
       }
     }
   };
