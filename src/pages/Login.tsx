@@ -23,7 +23,9 @@ const Login = () => {
         if (data.success) {
           setIsLoggedIn(true);
           getUserData();
+          toast.success("Account created successfully");
           navigate('/');
+          
         } else {
           toast.error(data.message);
         }
@@ -32,6 +34,7 @@ const Login = () => {
         if (data?.success) {
           setIsLoggedIn(true);
           getUserData();
+          toast.success("Logged in successfully");
           navigate('/');
         } else {
           toast.error(data.message);
