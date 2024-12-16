@@ -27,6 +27,7 @@ const [statusFilter, setStatusFilter] = useState<string>("");
 const [priorityFilter, setPriorityFilter] = useState<string>("");
   const fetchTasks = async () => {
     try {
+      axios.defaults.withCredentials = true;
       const response = await axios.get(`${backendUrl}/api/task`); // Fixed template literal syntax
       console.log(response);
       
@@ -48,6 +49,7 @@ const [priorityFilter, setPriorityFilter] = useState<string>("");
 
   const handleAddTask = async (newTask: Tasks) => {
     try {
+      axios.defaults.withCredentials = true;
       const response = await axios.post(`${backendUrl}/api/task`, newTask); // Fixed template literal syntax
       if (response.data.success) {
         toast.success('Task added successfully');
@@ -71,6 +73,7 @@ const handleEditTask = (task: Tasks) => {
 
 const handleUpdateTask = async (updatedTask: Tasks) => {
   try {
+    axios.defaults.withCredentials = true;
     const response = await axios.put(`${backendUrl}/api/task/${updatedTask._id}`, updatedTask);
     if (response.data.success) {
       toast.success("Task updated successfully");
@@ -86,8 +89,11 @@ const handleUpdateTask = async (updatedTask: Tasks) => {
 };
 
     const handleDeleteTask = async (taskId: string) => {
+
     if (window.confirm('Are you sure you want to delete this task?')) {
       try {
+        axios.defaults.withCredentials = true;
+
         const response = await axios.delete(`${backendUrl}/api/task/${taskId}`);
         if (response.data.success) {
           toast.success('Task deleted successfully');

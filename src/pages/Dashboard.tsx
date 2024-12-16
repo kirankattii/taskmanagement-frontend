@@ -37,6 +37,8 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
+        axios.defaults.withCredentials = true;
+
         const response = await axios.post(`${backendUrl}/api/task/dashboard`);
         if (response.data.success) {
           setDashboardData(response.data.summary);
